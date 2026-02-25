@@ -3,9 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Rock, Paper, Scissors</title>
   </head>
   <body>
+    <main class="container">
+      <section class="game-board">
+        <!-- GAME-MENU -->
+        <div class="menu">
+          <h1>Rock, Paper, Scissors</h1>
+          <button class="btn">start</button>
+        </div>
+        <!-- GAME-BOARD -->
+        <div class="game">
+          <div class="game-info">
+            <div class="menu-btns">
+              <button class="btn">Restart</button>
+              <button class="btn">Back to Menu</button>
+            </div>
+            <div class="rounds">
+              <span>Round:</span>
+              <span id="current-round">1</span>
+              <span>/</span>
+              <span id="all-rounds">5</span>
+            </div>
+          </div>
+          <div class="type-board">
+            <div class="choice-content">
+              <div class="choice">
+                <span id="player-choice">🪨</span>
+              </div>
+              <span class="score" id="player-score">0</span>
+            </div>
+
+            <div class="choice-content">
+              <div class="choice">
+                <span class="score" id="computer-choice">❓</span>
+              </div>
+              <span class="score" id="computer-score">0</span>
+            </div>
+          </div>
+          <div>
+            <span id="comment">Choose wisely</span>
+          </div>
+          <div class="choice-bar">
+            <button class="choice-btn" id="rock-btn">🪨</button>
+            <button class="choice-btn" id="paper-btn">📃</button>
+            <button class="choice-btn" id="Scissors-btn">✂️</button>
+          </div>
+        </div>
+      </section>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>

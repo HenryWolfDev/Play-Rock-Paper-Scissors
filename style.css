@@ -1,0 +1,151 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  border-style: none;
+}
+
+html {
+  font-size: 62.5%;
+  color: rgb(227, 228, 229);
+}
+
+body {
+  height: 100vh;
+  background-color: rgb(41, 41, 40);
+}
+
+main {
+  height: 100%;
+}
+
+.container {
+  max-width: 1920px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.btn {
+  background-color: rgb(214, 224, 226);
+  padding: 2rem;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(160, 165, 167);
+  }
+}
+
+.game-board {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto 0;
+
+  .menu {
+    max-width: 50rem;
+    width: 100%;
+    max-height: 35rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2rem;
+    border: 0.1rem solid whitesmoke;
+
+    h1 {
+      text-align: center;
+      font-size: 6rem;
+    }
+  }
+
+  .game {
+    padding: 1rem 2rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 4rem;
+
+    border: 0.1rem solid whitesmoke;
+
+    .game-info {
+      width: 100%;
+      text-align: center;
+      font-size: 2rem;
+
+      .menu-btns {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        .btn {
+          padding: 0.5rem;
+          font-size: 1.6rem;
+        }
+      }
+
+      .rounds {
+        padding-top: 3rem;
+        span {
+          font-size: 3rem;
+        }
+      }
+    }
+
+    .type-board {
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 8rem;
+
+      .choice-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 6rem;
+        .choice {
+          padding: 2rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: 0.1rem solid whitesmoke;
+        }
+
+        .score {
+          font-weight: bold;
+          color: rgb(11, 225, 157);
+        }
+      }
+    }
+
+    .choice-bar {
+      text-align: center;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      .choice-btn {
+        padding: 1rem;
+        font-size: 4rem;
+        background-color: rgba(131, 131, 131, 0.1);
+        cursor: pointer;
+
+        &:hover {
+          background-color: rgba(131, 131, 131, 0.5);
+        }
+      }
+    }
+  }
+}
+
+.hide {
+  display: none;
+}

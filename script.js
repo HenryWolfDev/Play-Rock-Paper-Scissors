@@ -2,9 +2,10 @@
 
 const game = {
   rules: {
-    Rock: { beat: 'Scissors' },
-    Scissors: { beat: 'Paper' },
-    Paper: { beat: 'Rock' },
+    Rock: { icon: '🪨', beat: 'Scissors' },
+    Scissors: { icon: '✂️', beat: 'Paper' },
+    Paper: { icon: '📃', beat: 'Rock' },
+    'default-icon': '❓',
   },
 
   rounds: 5,
