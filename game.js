@@ -1,6 +1,6 @@
 'use strict';
 
-const game = {
+export const game = {
   rules: {
     Rock: { icon: '🪨', beat: 'Scissors' },
     Scissors: { icon: '✂️', beat: 'Paper' },

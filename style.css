@@ -65,7 +65,7 @@ main {
 
   .game {
     padding: 1rem 2rem 2rem 2rem;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
@@ -146,6 +146,6 @@ main {
   }
 }
 
-.hide {
-  display: none;
+.show {
+  display: flex;
 }
