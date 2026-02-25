@@ -1,79 +1,56 @@
 'use strict';
+import { game } from './data/data.js';
 
-const game = {
-  rules: {
-    Rock: { icon: '🪨', beat: 'Scissors' },
-    Scissors: { icon: '✂️', beat: 'Paper' },
-    Paper: { icon: '📃', beat: 'Rock' },
-    'default-icon': '❓',
-  },
+// UI
+const currentRound = document.getElementById('current-round');
+const playerChoice = document.getElementById('player-choice');
+const playerScore = document.getElementById('player-score');
+const computerChoice = document.getElementById('computer-choice');
+const computerScore = document.getElementById('computer-score');
+const overlay = document.querySelector('.overlay');
 
-  rounds: 5,
-  humanScore: 0,
-  computerScore: 0,
-  currentRound: 0,
+const comment = document.getElementById('comment');
+const endComment = document.getElementById('end-comment');
 
-  getHumanChoice() {
-    const choice = prompt('Scissors, Rock or Paper? ');
+const restartBtn = document.getElementById('restart-btn');
 
-    const format = text => {
-      return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
-    };
-    return format(choice);
-  },
+const playGame = () => {
+  document.querySelectorAll('.choice-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const humanChoice = btn.dataset.choice;
+      let round = game.playRound(humanChoice);
 
-  getComputerChoice() {
-    const choices = ['Rock', 'Scissors', 'Paper'];
+      playerScore.textContent = round.humanScore;
+      computerScore.textContent = round.computerScore;
 
-    const randomIndex = Math.floor(Math.random() * choices.length);
-    return choices[randomIndex];
-  },
+      playerChoice.textContent = round.playerIcon;
+      computerChoice.textContent = round.computerIcon;
 
-  playRound() {
-    const humanChoice = this.getHumanChoice();
-    const computerChoice = this.getComputerChoice();
-    this.currentRound++;
+      currentRound.textContent = round.currentRound;
+      comment.textContent = round.message;
 
-    let resultMessage = this.getCurrentRoundResult(humanChoice, computerChoice);
-
-    return {
-      message: resultMessage,
-      score: `Score: ${this.humanScore} - ${this.computerScore}`,
-      round: `Round: ${this.currentRound} / ${this.rounds}`,
-      isGameOver: this.currentRound === this.rounds,
-    };
-  },
-
-  getCurrentRoundResult(humanChoice, computerChoice) {
-    if (this.rules[humanChoice].beat === computerChoice) {
-      this.humanScore++;
-      return `You win! ${humanChoice} beats ${computerChoice}.`;
-    } else if (this.rules[computerChoice].beat === humanChoice) {
-      this.computerScore++;
-      return `You lose! ${computerChoice} beats ${humanChoice}.`;
-    } else {
-      return `Draw .`;
-    }
-  },
-
-  getFinalResult(humanScore, computerScore) {
-    return humanScore > computerScore
-      ? `You won the game!`
-      : humanScore < computerScore
-        ? `Computer won the game.`
-        : 'Draw.';
-  },
+      if (round.currentRound === game.rounds) {
+        endComment.textContent = game.getFinalResult();
+        overlay.classList.remove('hide');
+        game.resettGame();
+        resettUI();
+        restartBtn.addEventListener('click', () => {
+          overlay.classList.add('hide');
+        });
+      }
+    });
+  });
 };
 
-while (game.currentRound < game.rounds) {
-  const status = game.playRound();
+const resettUI = () => {
+  playerScore.textContent = 0;
+  computerScore.textContent = 0;
 
-  console.log(status.message);
-  console.log(status.round);
-  console.log(status.score);
-  console.log('-------------------');
+  playerChoice.textContent = game.rules['default-icon'];
+  computerChoice.textContent = game.rules['default-icon'];
 
-  if (status.isGameOver) {
-    console.log(game.getFinalResult());
-  }
-}
+  currentRound.textContent = 0;
+  comment.textContent = comment.dataset.original;
+};
+
+playGame();
